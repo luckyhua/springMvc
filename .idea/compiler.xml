@@ -22,10 +22,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="springMvc" />
+        <module name="spring-demo" />
+        <module name="spring-framework-webmvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-demo" target="1.5" />
+      <module name="spring-framework-webmvc" target="1.5" />
       <module name="springMvc" target="1.5" />
     </bytecodeTargetLevel>
   </component>

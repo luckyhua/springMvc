@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-demo/spring-demo.iml" filepath="$PROJECT_DIR$/spring-demo/spring-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-framework-webmvc/spring-framework-webmvc.iml" filepath="$PROJECT_DIR$/spring-framework-webmvc/spring-framework-webmvc.iml" />
       <module fileurl="file://$PROJECT_DIR$/springMvc.iml" filepath="$PROJECT_DIR$/springMvc.iml" />
     </modules>
   </component>
