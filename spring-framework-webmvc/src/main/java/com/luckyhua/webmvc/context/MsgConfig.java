@@ -81,7 +81,7 @@ public class MsgConfig implements Logable{
 		}
 
 		try {
-			Map<String,String> newMsg = loadMapByConfigPath(path, new HashMap<>());
+			Map<String, String> newMsg = loadMapByConfigPath(path, new HashMap<String, String>());
 			msgCache.put(path, newMsg);
 			return newMsg.get(key);
 		} catch (Exception e) {

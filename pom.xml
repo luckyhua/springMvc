@@ -17,7 +17,7 @@
 
     <properties>
         <!-- spring framework version -->
-        <spring.version>4.3.0.RELEASE</spring.version>
+        <spring.version>4.2.0.RELEASE</spring.version>
         <!-- jedis used to access redis -->
         <jedis.version>2.8.2</jedis.version>
         <!-- mybatis version -->
@@ -228,6 +228,12 @@
             <scope>provided</scope>
         </dependency>
         <!-- servlet api end! -->
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3</version>
+        </dependency>
 
     </dependencies>
 

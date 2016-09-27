@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<typeAliases></typeAliases>
+	<!-- 配置数据源相关的信息 -->
+	<!-- 使用mybatis-spring，只要把mapper文件放到 mybatis/mappers路径下即可 -->
+</configuration>

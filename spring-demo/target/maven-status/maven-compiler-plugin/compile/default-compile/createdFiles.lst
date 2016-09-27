@@ -1,0 +1,4 @@
+com\luckyhua\demo\auth\user\service\UserService.class
+com\luckyhua\demo\core\jsonp\JsonpAdvice.class
+com\luckyhua\demo\auth\user\service\impl\UserServiceImpl.class
+com\luckyhua\demo\auth\user\controller\UserController.class

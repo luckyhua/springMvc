@@ -112,13 +112,11 @@ public class BaseExceptionInterceptor implements HandlerExceptionResolver,Logabl
 		return new ModelAndView();
 	}
 
-	public HttpMessageConverter<JsonResult> getJsonmessageConverter() {
+	public HttpMessageConverter<JsonResult> getJsonMessageConverter() {
 		return jsonMessageConverter;
 	}
 
-	public void setJsonmessageConverter(
-			HttpMessageConverter<JsonResult> jsonMessageConverter) {
+	public void setJsonMessageConverter(HttpMessageConverter<JsonResult> jsonMessageConverter) {
 		this.jsonMessageConverter = jsonMessageConverter;
 	}
-
 }

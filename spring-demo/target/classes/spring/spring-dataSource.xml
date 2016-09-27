@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+    http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+       default-autowire="byName" default-lazy-init="true">
+
+	<!-- 配置数据源，数据源在 jdbc.properties 中配置，使用c3p0数据库连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<!-- 连接池中保留的最小连接数 -->
+		<property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+		<!-- 连接池中保留的最大连接数 -->
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+		<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间 -->
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+		<property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+		<!--检查所有连接池中的空闲连接的时间间隔(秒) -->
+		<property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+		<!--从数据库获取新连接失败后重复尝试的次数 -->
+		<property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"></property>
+		<!-- 连接空闲时间 -->
+		<property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property> 
+		<!--c3p0将建一张名为Test的空表，并使用其自带的查询语句进行测试。如果定义了这个参数那么 
+			属性preferredTestQuery将被忽略。你不能在这张Test表上进行任何操作，它将只供c3p0测试使用。Default: null--> 
+<!-- 		<property name="automaticTestTable" value="Test"></property> -->
+		<!--定义所有连接测试都执行的测试语句。在使用连接测试的情况下这个一显著提高测试速度。注意：
+		测试的表必须在初始数据源的时候就存在。Default: null-->
+		<property name="preferredTestQuery"><value>SELECT 1</value></property>
+		<!--获取连接失败将会引起所有等待连接池来获取连接的线程抛出异常。但是数据源仍有效 
+			保留，并在下次调用getConnection()的时候继续尝试获取连接。如果设为true，那么在尝试 
+			获取连接失败后该数据源将申明已断开并永久关闭。Default: false--> 
+		<property name="breakAfterAcquireFailure" value="true" />  
+		<!--因性能消耗大请只在需要的时候使用它。如果设为true那么在每个connection提交的 
+			时候都将校验其有效性。建议使用idleConnectionTestPeriod或automaticTestTable 
+			等方法来提升连接测试的性能。Default: false --> 
+		<property name="testConnectionOnCheckout" value="false" />  
+	</bean>
+	
+</beans>

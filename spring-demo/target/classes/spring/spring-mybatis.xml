@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+    http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+       default-autowire="byName" default-lazy-init="true">
+
+	<!-- 集成MyBatis -->
+	<bean id="sqlFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/mybatis/sqlMapConfig.xml" />
+		<property name="mapperLocations" value="classpath*:mapper/mysql/**/*.xml"/>
+		<property name="configurationProperties">
+			<props>
+				<prop key="cacheEnabled">true</prop>
+				<!-- 查询时，关闭关联对象即时加载以提高性能 -->
+				<prop key="lazyLoadingEnabled">true</prop>
+				<!-- 设置关联对象加载的形态，此处为按需加载字段(加载字段由SQL指定)，不会加载关联表的所有字段，以提高性能 -->
+				<prop key="aggressiveLazyLoading">false</prop>
+				<!-- 对于未知的SQL查询，允许返回不同的结果集以达到通用的效果 -->
+				<prop key="multipleResultSetsEnabled">true</prop>
+				<!-- 允许使用列标签代替列名 -->
+				<prop key="useColumnLabel">true</prop>
+				<!-- 允许使用自定义的主键值(比如由程序生成的UUID 32位编码作为键值)，数据表的PK生成策略将被覆盖 -->
+				<prop key="useGeneratedKeys">true</prop>
+				<!-- 给予被嵌套的resultMap以字段-属性的映射支持 -->
+				<prop key="autoMappingBehavior">FULL</prop>
+				<!-- 对于批量更新操作缓存SQL以提高性能 -->
+				<prop key="defaultExecutorType">BATCH</prop>
+				<!-- 数据库超过25000秒仍未响应则超时 -->
+				<prop key="defaultStatementTimeout">25000</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置sqlSessionTemplate -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession"
+		scope="prototype">
+		<constructor-arg ref="sqlFactory" index="0" />
+	</bean>
+	
+	<!-- 使用mapper的自动扫描器 将包中的mapper扫描出来自动实例化 自动实例化后将bean的名称定为类的名称(第一个字母小写) -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描的包的路径 -->
+		<property name="basePackage" value="mapper.mysql" />
+		<!-- sqlSessionFactoryBeanName的名称 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlFactory" />
+	</bean>
+
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 事务传播行为 -->
+<!-- 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice> -->
+	<!-- aop的切面 -->
+<!-- 	<aop:config proxy-target-class="true">
+		<aop:advisor advice-ref="txAdvice"
+			pointcut="execution(* .*.*(..))" />
+	</aop:config> -->
+	<!-- 启动注解事物 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+</beans>
