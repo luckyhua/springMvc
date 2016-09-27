@@ -29,16 +29,20 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-	
-	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="defaultContentType" value="application/json" />
+
+	<bean id="contentNegotiationManager"  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 		<property name="ignoreAcceptHeader" value="true" />
+		<property name="defaultContentType" value="application/json" />
 		<property name="mediaTypes">
 			<map>
 				<entry key="json" value="application/json" />
 				<entry key="html" value="text/html" />
 			</map>
 		</property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager" ref="contentNegotiationManager" />
 		<property name="viewResolvers">
 			<list>
 				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />

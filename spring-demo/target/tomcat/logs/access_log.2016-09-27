@@ -1,0 +1,14 @@
+192.168.1.110 - - [27/Sep/2016:20:20:16 +0800] "GET /springDemo HTTP/1.1" 404 949 http-bio-8888-exec-1 205
+192.168.1.110 - - [27/Sep/2016:20:20:20 +0800] "GET /springDemo HTTP/1.1" 404 949 http-bio-8888-exec-2 3
+192.168.1.110 - - [27/Sep/2016:20:20:59 +0800] "GET /springDemo HTTP/1.1" 404 949 http-bio-8888-exec-3 4
+192.168.1.110 - - [27/Sep/2016:20:22:03 +0800] "GET /springDemo HTTP/1.1" 302 - http-bio-8888-exec-1 0
+192.168.1.110 - - [27/Sep/2016:20:22:03 +0800] "GET /springDemo/ HTTP/1.1" 200 342 http-bio-8888-exec-2 163
+192.168.1.110 - - [27/Sep/2016:20:22:25 +0800] "GET /springDemo/v1/auth/user/login HTTP/1.1" 200 67 http-bio-8888-exec-3 134
+192.168.1.110 - - [27/Sep/2016:20:22:25 +0800] "GET /springDemo/v1/auth/user/login HTTP/1.1" 200 67 http-bio-8888-exec-5 4
+192.168.1.110 - - [27/Sep/2016:20:22:33 +0800] "GET /springDemo/ HTTP/1.1" 200 342 http-bio-8888-exec-6 2
+192.168.1.110 - - [27/Sep/2016:20:22:33 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8888-exec-7 0
+192.168.1.110 - - [27/Sep/2016:20:22:45 +0800] "GET /springDemo/auth/user/login HTTP/1.1" 404 1003 http-bio-8888-exec-8 3
+192.168.1.110 - - [27/Sep/2016:20:23:02 +0800] "GET /springDemo/auth/user/login HTTP/1.1" 404 1003 http-bio-8888-exec-9 1
+192.168.1.110 - - [27/Sep/2016:20:23:05 +0800] "GET /springDemo/auth/user/login HTTP/1.1" 404 1003 http-bio-8888-exec-10 1
+192.168.1.110 - - [27/Sep/2016:20:23:22 +0800] "GET /springDemo/v1/auth/user/login HTTP/1.1" 200 67 http-bio-8888-exec-10 4
+192.168.1.110 - - [27/Sep/2016:20:23:50 +0800] "GET /springDemo/v1/auth/user/login?phone=111&vcode=222 HTTP/1.1" 200 65 http-bio-8888-exec-10 5

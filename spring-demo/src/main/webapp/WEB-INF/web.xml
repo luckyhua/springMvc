@@ -40,26 +40,6 @@
 	</listener>
 	<!-- Listener End -->
 
-	<!-- filter begin -->
-	<!-- authorise filter -->
-	<!--<filter>-->
-		<!--<filter-name>authorise</filter-name>-->
-		<!--<filter-class>com.ewe.bjdc.core.filter.AuthoriseFilter</filter-class>-->
-		<!--<init-param>-->
-			<!--<param-name>exclude</param-name>-->
-			<!--<param-value>-->
-				<!--/record/org/apply,-->
-				<!--/auth/user/regists,-->
-				<!--/auth/user/login,-->
-				<!--/sys/base/sms/send-->
-			<!--</param-value>-->
-		<!--</init-param>-->
-	<!--</filter>-->
-	<!--<filter-mapping>-->
-		<!--<filter-name>authorise</filter-name>-->
-		<!--<url-pattern>/v1/*</url-pattern>-->
-	<!--</filter-mapping>-->
-	<!-- filter end! -->
 	<servlet>
 		<servlet-name>springDemo</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

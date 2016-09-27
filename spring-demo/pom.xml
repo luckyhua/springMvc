@@ -59,7 +59,7 @@
                     <charset>utf-8</charset>
                     <url>http://localhost:8080/manager/text</url>
                     <server>tomcat7</server>
-                    <port>6666</port>
+                    <port>8888</port>
                     <uriEncoding>UTF-8</uriEncoding>
                     <path>/springDemo</path>
                 </configuration>
