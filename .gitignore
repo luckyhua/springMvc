@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+springMvc.iml
+/.gitignore
+/spring-demo/target/
+/logs/
+/spring-demo/spring-demo.iml

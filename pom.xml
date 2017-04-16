@@ -8,7 +8,6 @@
     <artifactId>spring-mvc-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>spring-framework-webmvc</module>
         <module>spring-demo</module>
     </modules>
     <packaging>pom</packaging>

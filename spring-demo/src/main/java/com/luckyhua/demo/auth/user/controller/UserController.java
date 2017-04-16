@@ -24,4 +24,9 @@ public class UserController {
 		return resJson;
 	}
 
+	@RequestMapping("/test")
+	public String test(){
+		return "test";
+	}
+
 }

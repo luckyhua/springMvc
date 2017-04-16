@@ -13,20 +13,19 @@
     <packaging>war</packaging>
     <description>spring mvc demo</description>
 
-    <properties>
-        <!-- the web mvc framework version -->
-        <webmvc.version>1.0-SNAPSHOT</webmvc.version>
-    </properties>
-
     <dependencies>
-        <!-- this is the base framework of the webmvc -->
         <dependency>
-            <groupId>com.luckyhua</groupId>
-            <artifactId>spring-framework-webmvc</artifactId>
-            <version>${webmvc.version}</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
     </dependencies>
-
     <build>
         <finalName>springDemo</finalName>
         <plugins>
@@ -61,7 +60,7 @@
                     <server>tomcat7</server>
                     <port>8888</port>
                     <uriEncoding>UTF-8</uriEncoding>
-                    <path>/springDemo</path>
+                    <path>/</path>
                 </configuration>
             </plugin>
         </plugins>
